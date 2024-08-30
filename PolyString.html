@@ -43,6 +43,13 @@
             </tr>
         </table>
         <script>
+            function syntplaceholder(c) {
+                if(c) {
+                    return "<span style=\"color: rgba(" + c + ",0.5);\">…</span>"
+                } else {
+                    return "<span style=\"color: rgba(0,0,0,0.5);\">…</span>";
+                }
+            }
             function syntadd(sym,desc,ex,match,hctam) {
                 document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
             }
@@ -50,6 +57,7 @@
             syntadd("*","Matches any string, but other caveats must be followed.","*a","ba<br/>ca<br/>da","b<br/>c<br/>d");
             syntadd(",","Matches either side","a,b","a<br/>b","ab");
             syntadd(".","Matches the preceding character or element one or more times","ab.","ab<br/>abb<br/>abbb","a<br/>b<br/>bb");
+            syntadd("(" + syntplaceholder() + ")","Matches the preceding character or element one or more times","ab.","ab<br/>abb<br/>abbb","a<br/>b<br/>bb");
         </script>
         <script src="polystring.js"/>
     </body>
