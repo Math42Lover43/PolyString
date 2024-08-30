@@ -47,7 +47,9 @@
                 document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
             }
             syntadd("\\","Can escape any special character, including itself.","a*\\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
-            syntadd("*","Matches any string","*","a<br/>b<br/>c","");
+            syntadd("*","Matches any string, but other caveats must be followed.","*a","ba<br/>ca<br/>da","b<br/>c<br/>d");
+            syntadd(",","Matches either side","a,b","a<br/>b","ab");
+            syntadd(".","Matches the preceding character or element one or more times","ab.","ab<br/>abb<br/>abbb","a<br/>b<br/>bb");
         </script>
         <script src="polystring.js"/>
     </body>
