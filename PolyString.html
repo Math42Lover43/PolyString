@@ -42,7 +42,7 @@
             function syntadd(sym,desc,ex,match,hctam) {
                 document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
             }
-            syntadd("\","Can escape any special character, including itself.","a*\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
+            syntadd("\\","Can escape any special character, including itself.","a*\\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
         </script>
         <script src="polystring.js"/>
     </body>
