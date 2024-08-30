@@ -14,6 +14,7 @@
             }
             td {
                 padding: 5px;
+                border: 1px solid black;
             }
         </style>
     </head>
@@ -22,7 +23,7 @@
         <input type="text" id="first" style="width: 50%;" class="code" placeholder="Put text here."/> <b id="match_bool">matches</b> <input type="text" id="polystring" placeholder="Put a PolyString pattern here." style="width: 50%;" class="code" spellcheck="false"/>
         <br/>
         <h3>Syntax</h3>
-        <table id="syntax_guide" style="border-collapse: collapse; border: 1px;">
+        <table id="syntax_guide" style="border-collapse: collapse">
             <tr>
                 <td>
                     Symbol
@@ -46,6 +47,7 @@
                 document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
             }
             syntadd("\\","Can escape any special character, including itself.","a*\\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
+            syntadd("*","Matches any string","*","a<br/>b<br/>c","");
         </script>
         <script src="polystring.js"/>
     </body>
