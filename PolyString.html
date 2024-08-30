@@ -15,8 +15,35 @@
         </style>
     </head>
     <body>
-        PolyString was developed by <a href="https://github.com/Math42Lover43">Math42Lover43</a> as a versatile alternative to RegEx. Below, you can test some patterns for an in-depth explanation. Syntax below. 
-        <input type="text" id="first" style="width: 50%;" class="code" placeholder="Put text here."/> <b id="match_bool">matches</b> <input type="text" id="polystring" placeholder="Put a PolyString pattern here." style="width: 50%;" class="code"/>
+        PolyString was developed by <a href="https://github.com/Math42Lover43">Math42Lover43</a> as a versatile alternative to RegEx. Below, you can test some patterns for an in-depth explanation. Syntax below.<br/>
+        <input type="text" id="first" style="width: 50%;" class="code" placeholder="Put text here."/> <b id="match_bool">matches</b> <input type="text" id="polystring" placeholder="Put a PolyString pattern here." style="width: 50%;" class="code" spellcheck="false"/>
+        <br/>
+        <h3>Syntax</h3>
+        <table id="syntax_guide">
+            <tr>
+                <td>
+                    Symbol
+                </td>
+                <td>
+                    Description
+                </td>
+                <td>
+                    Example
+                </td>
+                <td>
+                    Matches
+                </td>
+                <td>
+                    Does not match
+                </td>
+            </tr>
+        </table>
+        <script>
+            function syntadd(sym,desc,ex,match,hctam) {
+                document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
+            }
+            syntadd("\","Can escape any special character, including itself.","a*\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
+        </script>
         <script src="polystring.js"/>
     </body>
 </html>
