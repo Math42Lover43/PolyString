@@ -65,7 +65,7 @@
             syntadd("+","Matches any concatenation of both sides.","a+b","ab<br/>ba","a<br/>b<br/>aa");
             syntadd("[" + syntplaceholder("0,0,255") + "-" + syntplaceholder("255,0,0") + "]","Matches any string within a specified range in Unicode order. In square brackets, only <span class=\"code\">!</span>, <span class=\"code\">\\</span>, and <span class=\"code\">,</span> are special characters, all others are automatically escaped. <span class=\"code\">,</span> may be used to specify multiple ranges (e.g. <span class=\"code\">[0-9,a-z]</span>).","[a-z]","a<br/>b<br/>c","0<br/>A<br/>×");
             syntadd("[" + syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0") + "]","Same as above, but excluding the left-hand and right-hand sides.","[À<ž]","à<br/>į<br/>Ž","À<br/>ž<br/>Ʒ");
-            syntadd("[!" + syntplaceholder() + "]","Matches any string not within the specified range.","[a-z]","0<br/>A<br/>×","a<br/>b<br/>c");
+            syntadd("[!" + syntplaceholder() + "]","Matches any string not within the specified range.","[!a-z]","0<br/>A<br/>×","a<br/>b<br/>c");
         </script>
         <script src="polystring.js"/>
     </body>
