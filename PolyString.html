@@ -55,6 +55,7 @@
             }
             syntadd("\\","Can escape any special character, including itself.","a*\\&*b","a&b<br/>ac&b<br/>a&db","ab<br/>acb<br/>abcb");
             syntadd("*","Matches any string, but other caveats must be followed.","*a","ba<br/>ca<br/>da","b<br/>c<br/>d");
+            syntadd("%","Matches any single character.","%","a<br/>x<br/>z","ab<br/>cd<br/>dt");
             syntadd(",","Matches either side","a,b","a<br/>b","ab");
             syntadd(".","Matches the preceding character or element one or more times","ab.","ab<br/>abb<br/>abbb","a<br/>b<br/>bb");
             syntadd("(" + syntplaceholder() + ")","Changes the scope of other special characters","a(b,c)","ab<br/>ac","c<br/>a");
@@ -67,6 +68,11 @@
             syntadd("[" + syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0") + "]","Same as above, but excluding the left-hand and right-hand sides.","[À<ž]","à<br/>į<br/>Ž","À<br/>ž<br/>Ʒ");
             syntadd("[!" + syntplaceholder() + "]","Matches any string not within the specified range.","[!a-z]","0<br/>A<br/>×","a<br/>b<br/>c");
             syntadd("<<" + syntplaceholder() + ">>","Definitions section","","","");
+            syntadd(syntplaceholder("0,0,255") + " = " + syntplaceholder("255,0,0"),"Defines a variable (the left-hand side) as the right-hand side. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;foo = bar<br/>>><br/>:foo:","bar","foo");
+            syntadd(syntplaceholder("0,0,255") + "(" + syntplaceholder("255,0,0") + ")","Converts strings matching certain patterns into another string in both the input and pattern lines. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>aba","aaa<br/>aba<br/>bbb","ccc<br/>ddd<br/>eee");
+            syntadd("{" + syntplaceholder() + "}","Forces the text inside to be matched exactly, exempting it from conversion definitions.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>{aba}","aba","aaa<br/>bbb<br/>aab");
+            syntadd(syntplaceholder() + "?","Matches the preceding character or element 0 or 1 time.","a?","a<br/>","aa<br/>aaa<br/>aaaa");
+            syntadd(syntplaceholder("0,0,255") + "&" + syntplaceholder("255,0,0"),"Matches any string that matches both sides.","a*&*b","ab<br/>acb<br/>aab","bac<br/>cab<br/>abc");
         </script>
         <script src="polystring.js"/>
     </body>
