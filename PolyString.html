@@ -71,7 +71,7 @@
             syntadd(syntplaceholder("0,0,255") + " = " + syntplaceholder("255,0,0"),"Defines a variable (the left-hand side) as the right-hand side. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;foo = bar<br/>>><br/>:foo:","bar","foo");
             syntadd(syntplaceholder("0,0,255") + "(" + syntplaceholder("255,0,0") + ")","Converts strings matching certain patterns into another string in both the input and pattern lines. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>aba","aaa<br/>aba<br/>bbb","ccc<br/>ddd<br/>eee");
             syntadd("{" + syntplaceholder() + "}","Forces the text inside to be matched exactly, exempting it from conversion definitions.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>{aba}","aba","aaa<br/>bbb<br/>aab");
-            syntadd(syntplaceholder() + "?","Matches the preceding character or element 0 or 1 time.","a?","a<br/>","aa<br/>aaa<br/>aaaa");
+            syntadd(syntplaceholder() + "?","Matches the preceding character or element 0 or 1 time.","a?b","ab<br/>b","aab<br/>aaab<br/>aaaab");
             syntadd(syntplaceholder("0,0,255") + "&" + syntplaceholder("255,0,0"),"Matches any string that matches both sides.","a*&*b","ab<br/>acb<br/>aab","bac<br/>cab<br/>abc");
         </script>
         <script src="polystring.js"/>
