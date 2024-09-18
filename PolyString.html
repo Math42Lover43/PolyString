@@ -67,12 +67,14 @@
             syntadd("[" + syntplaceholder("0,0,255") + "-" + syntplaceholder("255,0,0") + "]","Matches any string within a specified range in Unicode order. In square brackets, only <span class=\"code\">!</span>, <span class=\"code\">\\</span>, and <span class=\"code\">,</span> are special characters, all others are automatically escaped. <span class=\"code\">,</span> may be used to specify multiple ranges (e.g. <span class=\"code\">[0-9,a-z]</span>).","[a-z]","a<br/>b<br/>c","0<br/>A<br/>×");
             syntadd("[" + syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0") + "]","Same as above, but excluding the left-hand and right-hand sides.","[À<ž]","à<br/>į<br/>Ž","À<br/>ž<br/>Ʒ");
             syntadd("[!" + syntplaceholder() + "]","Matches any string not within the specified range.","[!a-z]","0<br/>A<br/>×","a<br/>b<br/>c");
-            syntadd("<<" + syntplaceholder() + ">>","Definitions section","","","");
+            syntadd("<<" + syntplaceholder() + ">>","Definitions section. If multiple definitions for the same input (converted character, variable name) are present, each definitions section is applied individually when evaluating, overwriting false booleans with true as needed, but not vice versa.","","","");
             syntadd(syntplaceholder("0,0,255") + " = " + syntplaceholder("255,0,0"),"Defines a variable (the left-hand side) as the right-hand side. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;foo = bar<br/>>><br/>:foo:","bar","foo");
             syntadd(syntplaceholder("0,0,255") + "(" + syntplaceholder("255,0,0") + ")","Converts strings matching certain patterns into another string in both the input and pattern lines. Must be used in <span class=\"code\"><< >></span>.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>aba","aaa<br/>aba<br/>bbb","ccc<br/>ddd<br/>eee");
             syntadd("{" + syntplaceholder() + "}","Forces the text inside to be matched exactly, exempting it from conversion definitions.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>{aba}","aba","aaa<br/>bbb<br/>aab");
             syntadd(syntplaceholder() + "?","Matches the preceding character or element 0 or 1 time.","a?b","ab<br/>b","aab<br/>aaab<br/>aaaab");
             syntadd(syntplaceholder("0,0,255") + "&" + syntplaceholder("255,0,0"),"Matches any string that matches both sides.","a*&*b","ab<br/>acb<br/>aab","bac<br/>cab<br/>abc");
+            syntadd(syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0"),"Requires that once the left-hand side appears, the right-hand side must appear at least once if and before the left-hand side recurs. Matches any string following this rule.","a<b","ab<br/>abab<br/>acb","acab<br/>aba<br/>aab");
+            syntadd(syntplaceholder("0,0,255") + ">" + syntplaceholder("255,0,0"),"Like <span class=\"code\"><</span>, but evaluates from right to left.","a>b","ab<br/>aab<br/>acab","abb<br/>bab<br/>aabb");
         </script>
         <script src="polystring.js"/>
     </body>
