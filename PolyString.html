@@ -73,7 +73,7 @@
             syntadd("{" + syntplaceholder() + "}","Forces the text inside to be matched exactly, exempting it from conversion definitions.","<<<br/>&nbsp;&nbsp;&nbsp;&nbsp;a(b)<br/>>><br/>{aba}","aba","aaa<br/>bbb<br/>aab");
             syntadd(syntplaceholder() + "?","Matches the preceding character or element 0 or 1 time.","a?b","ab<br/>b","aab<br/>aaab<br/>aaaab");
             syntadd(syntplaceholder("0,0,255") + "&" + syntplaceholder("255,0,0"),"Matches any string that matches both sides.","a*&*b","ab<br/>acb<br/>aab","bac<br/>cab<br/>abc");
-            syntadd(syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0"),"Requires that once the left-hand side appears, the right-hand side must appear at least once if and before the left-hand side recurs. Matches any string following this rule.","a\<b","ab<br/>abab<br/>acb","acab<br/>aba<br/>aab");
+            syntadd(syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0"),"Requires that once the left-hand side appears, the right-hand side must appear at least once if and before the left-hand side recurs. Matches any string following this rule.","a&lt;b","ab<br/>abab<br/>acb","acab<br/>aba<br/>aab");
             syntadd(syntplaceholder("0,0,255") + ">" + syntplaceholder("255,0,0"),"Like <span class=\"code\"><</span>, but evaluates from right to left.","a>b","ab<br/>aab<br/>acab","abb<br/>bab<br/>aabb");
         </script>
         <script src="polystring.js"/>
