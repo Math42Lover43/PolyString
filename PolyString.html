@@ -50,6 +50,9 @@
                     return "<span style=\"color: rgba(0,0,0,0.5);\">…</span>";
                 }
             }
+            function subdoc(what,desc) {
+                return "<li><span class=\"code\">" + what + "</span> - " + desc;
+            }
             function syntadd(sym,desc,ex,match,hctam) {
                 document.getElementById("syntax_guide").innerHTML += "<tr><td class=\"code\" style=\"font-size: 18pt;\">" + sym + "</td><td>" + desc + "</td><td class=\"code\">" + ex + "</td><td>" + match + "</td><td>" + hctam + "</td><tr>";
             }
@@ -75,8 +78,8 @@
             syntadd(syntplaceholder("0,0,255") + "&" + syntplaceholder("255,0,0"),"Matches any string that matches both sides.","a*&*b","ab<br/>acb<br/>aab","bac<br/>cab<br/>abc");
             syntadd(syntplaceholder("0,0,255") + "<" + syntplaceholder("255,0,0"),"Requires that once the left-hand side appears, the right-hand side must appear at least once if and before the left-hand side recurs. Matches any string following this rule.","a&lt;b","ab<br/>abab<br/>acb","acab<br/>aba<br/>aab");
             syntadd(syntplaceholder("0,0,255") + ">" + syntplaceholder("255,0,0"),"Like <span class=\"code\"><</span>, but evaluates from right to left.","a>b","ab<br/>aab<br/>acab","abb<br/>bab<br/>aabb");
-            syntadd("$" + syntplaceholder(),"Matches any character within a certain set (e.g. <span class=\"code\">$a</span>):","","","");
-            syntadd("#" + syntplaceholder(),"Matches any character <i>not</i> within a certain set (e.g. <span class=\"code\">#a</span> is the same as <span class=\"code\">%!$a</span>):","","","");
+            syntadd("$" + syntplaceholder(),"Matches any character within a certain set (e.g. <span class=\"code\">$a</span>):<br/><ul>" + subdoc("$a","any alphanumeric character in <i>any script</i>") + subdoc("$A","any alphabet character in <i>any script</i>") + subdoc("$b","any box drawing character") + subdoc("$c","any combining character (diacritic)") + subdoc("$C","any currency symbol") + subdoc("$d","any digit character in <i>any script</i>") + subdoc("$D","any Latin digit from 0 to 9") + subdoc("$e","any character from extended planes") + subdoc("$E","any emoji character</i>") + subdoc("$u","any character safe for URLs") + subdoc("$U","any character unsafe for URLs") + subdoc("$w","any whitespace character") + "</ul>","","","");
+            syntadd("#" + syntplaceholder(),"Matches any character <i>not</i> within a certain set (e.g. <span class=\"code\">#a</span> is the same as <span class=\"code\">%!$a</span>).","","","");
             syntadd("@<i>n</i>" + syntplaceholder(),"Matches <i>exactly</i> what the (<i>n</i> + 1)<sup>th</sup> expression in either parentheses or square brackets matched, without modification.","(%)@0","aa<br/>bb<br/>cc","ab<br/>bc<br/>xy");
         </script>
         <script src="polystring.js"/>
