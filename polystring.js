@@ -4,7 +4,7 @@ var PolyString = {
         var reqs = []; // format: {req,bool,mult,wild}
         var n = 0;
         var newprops = {"bool": true};
-        while(n <= exp.length) {
+        while(n < exp.length) {
             if(str[n] == "*") {
                 if(reqs[reqs.length - 1].wild != 0) {
                     reqs[reqs.length - 1].wild = -1;
@@ -19,7 +19,7 @@ var PolyString = {
                 }
             }
         }
-        console.log(str);
+        console.log(reqs);
     },
     "version":"1.0"
 }
