@@ -1,6 +1,6 @@
  // If "wild" is -1, unlimited length, >0: limited length
 var PolyString = {
-    "match": function(str,exp) {
+    "compile": function(exp) {
         var reqs = []; // format: {req,bool,mult,wild}
         var n = 0;
         var newprops = {"bool": true};
@@ -20,7 +20,7 @@ var PolyString = {
             }
             n++;
         }
-        console.log(reqs);
+        return reqs;
     },
     "version":"1.0"
 }
