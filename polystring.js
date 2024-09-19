@@ -19,6 +19,7 @@ var PolyString = {
                 }
             }
         }
+        console.log(str);
     },
     "version":"1.0"
 }
