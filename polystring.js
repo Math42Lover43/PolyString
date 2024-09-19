@@ -18,6 +18,7 @@ var PolyString = {
                     reqs.push({"bool":newprops.bool,"wild":1});
                 }
             }
+            n++;
         }
         console.log(reqs);
     },
