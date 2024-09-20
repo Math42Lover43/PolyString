@@ -12,10 +12,12 @@ var PolyString = {
                     reqs.push({"bool":newprops.bool,"wild":-1});
                 }
             } else if(exp[n] == "%") {
-                if(reqs[reqs.length - 1] && reqs[reqs.length - 1].wild > 0 && typeof reqs[reqs.length - 1].wild == "number" && !reqs[reqs.length - 1].wild == -1) {
+                if(reqs[reqs.length - 1] && reqs[reqs.length - 1].wild > 0 && typeof reqs[reqs.length - 1].wild == "number") {
                     reqs[reqs.length - 1].wild += 1;
                 } else {
-                    reqs.push({"bool":newprops.bool,"wild":1});
+                    if(reqs[reqs.length - 1].wild != -1) {
+                        reqs.push({"bool":newprops.bool,"wild":1});
+                    }
                 }
             }
             n++;
