@@ -15,7 +15,7 @@ var PolyString = {
                 if(reqs[reqs.length - 1] && reqs[reqs.length - 1].wild > 0 && typeof reqs[reqs.length - 1].wild == "number") {
                     reqs[reqs.length - 1].wild += 1;
                 } else {
-                    if(reqs[reqs.length - 1] && reqs.length != 0 && reqs[reqs.length - 1].wild != -1) {
+                    if(reqs.length == 0 || (reqs[reqs.length - 1] && reqs[reqs.length - 1].wild != -1)) {
                         reqs.push({"bool":newprops.bool,"wild":1});
                     }
                 }
