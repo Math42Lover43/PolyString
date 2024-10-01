@@ -40,5 +40,28 @@ var PolyString = {
         }
         return reqs;
     },
+    "error": function(type,arg){
+        var error;
+        if(type == "quantifier") {
+            error = "Quantifier tokens require a left-hand side";
+        }
+        if(type == "unmatched") {
+            error = "Unmatched '" + arg + "'";
+        }
+        if(type == "unexpected") {
+            error = "Unexpected token '" + arg + "'";
+        }
+        if(type == "badend") {
+            error = "Unexpected end of pattern";
+        }
+        if(type == "noset") {
+            error = "Set '" + arg + "' does not exist";
+        }
+        if(type == "@") {
+            error = "Nothing to reference";
+        }
+        throw "SyntaxError: Invalid PolyString pattern: " + error;
+        return error;
+    },
     "version":"1.0"
 }
