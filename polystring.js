@@ -42,6 +42,7 @@ var PolyString = {
     },
     "error": function(type,arg){
         var error;
+        var type = "Syntax";
         if(type == "quantifier") {
             error = "Quantifier tokens require a left-hand side";
         }
@@ -60,7 +61,11 @@ var PolyString = {
         if(type == "@") {
             error = "Nothing to reference";
         }
-        throw "SyntaxError: Invalid PolyString pattern: " + error;
+        if(type == "stack") {
+            error = "Maximum call stack size exceeded";
+            type = "Range";
+        }
+        throw type + "Error: Invalid PolyString pattern: " + error;
         return error;
     },
     "version":"1.0"
