@@ -65,7 +65,7 @@ var PolyString = {
             error = "Maximum call stack size exceeded";
             type = "Range";
         }
-        console.error(type + "Error: Invalid PolyString pattern: " + error);
+        console.error("Uncaught " + type + "Error: Invalid PolyString pattern: " + error);
         return error;
     },
     "version":"1.0"
