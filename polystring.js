@@ -10,7 +10,7 @@ var PolyString = {
             newprops.escaped = false;
         };
         while(n < exp.length) {
-            if(!reqs[array_stack[0]) {
+            if(!reqs[array_stack[0]]) {
                 reqs[array_stack[0]] = {
                     "characters":"",
                     "equiv":true
