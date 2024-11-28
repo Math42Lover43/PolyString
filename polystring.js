@@ -1,10 +1,23 @@
 var PolyString = {
     "compile": function(exp) {
         var reqs = []; // format: characters: {[index, identifiers*], allowed characters, bool}; multitudes: {ands, multitude strings, identifier}
+        var array_stack = [0];
         var n = 0;
         var newprops = {"bool": true,"escaped":false};
+        var add = function(arg) {
+            reqs[array_stack[0]].characters.allowedcharacters += arg;
+            newprops.escaped = false;
+        };
         while(n < exp.length) {
-            
+            if(newprops.escaped) {
+                add(exp[n]);
+            }
+            else if(exp[n] == "\\") {
+                newprops.escaped = true;
+            }
+            else {
+                add(exp[n]);
+            }
             n++;
         }
         return reqs;
