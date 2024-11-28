@@ -11,12 +11,10 @@ var PolyString = {
         };
         while(n < exp.length) {
             if(!reqs[array_stack[0]) {
-                reqs[array_stack[0] = [
-                    {
-                        "characters":"",
-                        "equiv":true
-                    }
-                ];
+                reqs[array_stack[0]] = {
+                    "characters":"",
+                    "equiv":true
+                };
             }
             if(newprops.escaped) {
                 add(exp[n]);
