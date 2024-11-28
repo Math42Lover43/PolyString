@@ -25,7 +25,7 @@ var PolyString = {
             else {
                 add(exp[n]);
             }
-            if(exp[n] != "\\") {
+            if(!newprops.escaped) {
                 n++;
             }
         }
