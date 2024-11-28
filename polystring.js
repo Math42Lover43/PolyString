@@ -25,7 +25,9 @@ var PolyString = {
             else {
                 add(exp[n]);
             }
-            n++;
+            if(exp[n] != "\\") {
+                n++;
+            }
         }
         return reqs;
     },
