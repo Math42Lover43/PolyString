@@ -6,14 +6,22 @@ var PolyString = {
         var i = 0;
         var newprops = {"bool": true,"escaped":false};
         var add = function(arg) {
-            reqs[array_stack[0]].characters += arg;
-            newprops.escaped = false;
+            if(reqs[array_stack[0]].characters != undefined) {
+                reqs[array_stack[0]].characters += arg;
+                newprops.escaped = false;
+            }
+            if(reqs[array_stack[0]].wild != undefined) {
+                if(reqs[array_stack[0]].wild != 0) {
+                    reqs[array_stack[0]].wild++;
+                }
+                newprops.escaped = false;
+            }
         };
         while(n < exp.length) {
             if(!reqs[array_stack[0]]) {
                 reqs[array_stack[0]] = {
                     "characters":"",
-                    "equiv":true
+                    "equiv":newprops.bool;
                 };
             }
             if(newprops.escaped) {
@@ -22,6 +30,17 @@ var PolyString = {
             else if(exp[n] == "\\") {
                 newprops.escaped = true;
             }
+            else if(exp[n] == "%") {
+                if(reqs[array_stack[0]].wild != undefined) {
+                    add();
+                } else {
+                    array_stack[0]++;
+                    reqs.push({
+                        "equiv":newprops.bool,
+                        wild = 1;
+                    });
+                }
+            }
             else {
                 add(exp[n]);
             }
@@ -29,32 +48,24 @@ var PolyString = {
         }
         return reqs;
     },
-    "error": function(type,arg){
+    "error": function(arg,pat){
         var error;
-        var name = "Syntax";
-        if(type == "quantifier") {
-            error = "Quantifier tokens require a left-hand side";
+        if(type == "call") {
+            error = `Nothing to call '${arg}' on`;
         }
         if(type == "unmatched") {
-            error = "Unmatched '" + arg + "'";
-        }
-        if(type == "unexpected") {
-            error = "Unexpected token '" + arg + "'";
-        }
-        if(type == "badend") {
-            error = "Unexpected end of pattern";
+            error = `Unmatched '${arg}'`;
         }
         if(type == "noset") {
-            error = "Set '" + arg + "' does not exist";
+            error = `Nonexistent set reference '${arg}'`;
         }
         if(type == "@") {
-            error = "Nothing to reference";
+            error = `Nonexistent group reference to '${arg}'`;
         }
-        if(type == "stack") {
-            error = "Maximum call stack size exceeded";
-            name = "Range";
+        if(type == "size") {
+            error = `Expression too large`;
         }
-        console.error("Uncaught " + name + "Error: Invalid PolyString pattern: " + error);
+        console.error(`Uncaught SyntaxError: Invalid PolyString pattern |${pattern}|: ${error}`);
         return error;
     },
     "version":"1.1"
