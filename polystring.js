@@ -25,9 +25,7 @@ var PolyString = {
             else {
                 add(exp[n]);
             }
-            if(!newprops.escaped) {
-                n++;
-            }
+            n++;
         }
         return reqs;
     },
