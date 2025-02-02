@@ -21,7 +21,7 @@ var PolyString = {
             if(!reqs[array_stack[0]]) {
                 reqs[array_stack[0]] = {
                     "characters":"",
-                    "equiv":newprops.bool;
+                    "equiv":newprops.bool
                 };
             }
             if(newprops.escaped) {
