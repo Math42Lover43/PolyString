@@ -37,7 +37,7 @@ var PolyString = {
                     array_stack[0]++;
                     reqs.push({
                         "equiv":newprops.bool,
-                        wild = 1;
+                        "wild":1;
                     });
                 }
             }
