@@ -68,7 +68,7 @@ var PolyString = {
                     array_stack[0]++;
                     reqs.push({
                         "equiv":newprops.bool,
-                        "character":exp[n]
+                        "characters":exp[n]
                     });
                 }
             }
