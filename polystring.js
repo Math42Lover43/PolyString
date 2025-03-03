@@ -6,13 +6,13 @@ var PolyString = {
         var i = 0;
         var newprops = {"bool": true,"escaped":false};
         var add = function(arg) {
-            if(reqs[array_stack[0]].characters != undefined) {
+            if(reqs[array_stack[0]].characters != undefined || typeof arg == "string") {
                 reqs[array_stack[0]].characters += arg;
                 newprops.escaped = false;
             }
             if(reqs[array_stack[0]].wild != undefined) {
                 if(reqs[array_stack[0]].wild != 0) {
-                    reqs[array_stack[0]].wild++;
+                    reqs[array_stack[0]].wild += arg;
                 }
                 newprops.escaped = false;
             }
@@ -32,7 +32,20 @@ var PolyString = {
             }
             else if(exp[n] == "%") {
                 if(reqs[array_stack[0]].wild != undefined) {
-                    add();
+                    if(reqs[array_stack[0]].wild != -1) {
+                        add(1);
+                    }
+                } else {
+                    array_stack[0]++;
+                    reqs.push({
+                        "equiv":newprops.bool,
+                        "wild":1
+                    });
+                }
+            }
+            else if(exp[n] == "*") {
+                if(reqs[array_stack[0]].wild != undefined) {
+                    reqs[array_stack[0]].wild = -1;
                 } else {
                     array_stack[0]++;
                     reqs.push({
