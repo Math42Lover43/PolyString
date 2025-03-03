@@ -77,7 +77,6 @@ var PolyString = {
         for(let n = 0; n < reqs.length; n++) {
             if(
                 reqs[n].characters == "" ||
-                reqs[n].wild == 1
             ) {
                 reqs = reqs.splice(0,n).concat(reqs.splice(n + 1,reqs.length));
                 n -= 1;
