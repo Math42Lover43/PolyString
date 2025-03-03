@@ -50,7 +50,7 @@ var PolyString = {
                     array_stack[0]++;
                     reqs.push({
                         "equiv":newprops.bool,
-                        "wild":1
+                        "wild":-1
                     });
                 }
             }
@@ -58,6 +58,15 @@ var PolyString = {
                 add(exp[n]);
             }
             n++;
+        }
+        for(let n = 0; n < reqs.length; n++) {
+            if(
+                reqs[n].characters == "" ||
+                reqs[n].wild == 1
+            ) {
+                reqs = reqs.splice(0,n).concat(reqs.splice(n + 1,reqs.length));
+                n -= 1;
+            }
         }
         return reqs;
     },
