@@ -8,6 +8,7 @@ var PolyString = {
         var add = function(arg) {
             if(typeof arg == "string") {
                 if(reqs[array_stack[0]].characters == undefined) {
+                    array_stack[0]++;
                     reqs.push(newprops);
                 }
                 reqs[array_stack[0]].characters += arg;
