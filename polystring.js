@@ -6,6 +6,9 @@ var PolyString = {
         var i = 0;
         var newprops = {"bool": true,"escaped":false};
         var add = function(arg) {
+            if(reqs[array_stack[0]].characters == undefined && typeof arg == "string") {
+                reqs.push(newprops);
+            }
             if(reqs[array_stack[0]].characters != undefined || typeof arg == "string") {
                 reqs[array_stack[0]].characters += arg;
                 newprops.escaped = false;
