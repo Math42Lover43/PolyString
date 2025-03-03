@@ -62,7 +62,15 @@ var PolyString = {
                 }
             }
             else {
-                add(exp[n]);
+                if(reqs[array_stack[0]].characters != undefined) {
+                    add(exp[n]);
+                } else {
+                    array_stack[0]++;
+                    reqs.push({
+                        "equiv":newprops.bool,
+                        "character":exp[n]
+                    });
+                }
             }
             n++;
         }
