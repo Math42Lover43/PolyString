@@ -1,6 +1,6 @@
 var PolyString = {
     "compile": function(exp) {
-        var reqs = []; // format: characters: {allowed characters, bool}; multitudes: {ands, multitude strings, identifier}
+        var reqs = []; // format: characters: {allowed characters, bool}; boolean multitudes: {bool type (AND, OR, NAND, NOR), conditions}
         var array_stack = [0];
         var n = 0;
         var i = 0;
