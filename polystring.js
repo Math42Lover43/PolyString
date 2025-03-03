@@ -65,7 +65,7 @@ var PolyString = {
         if(type == "size") {
             error = `Expression too large`;
         }
-        throw `SyntaxError: Invalid PolyString pattern |${pattern}|: ${error}`);
+        throw `SyntaxError: Invalid PolyString pattern ${pattern}: ${error}`;
         return error;
     },
     "version":"1.1"
