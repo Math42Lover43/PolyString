@@ -1,5 +1,8 @@
 var PolyString = {
     "compile": function(exp) {
+        if(exp[exp.length - 2] + exp[exp.length - 1] == "\\\\") {
+            PolyString.error("backslash");
+        }
         var reqs = []; // format: characters: {allowed characters, bool}; boolean multitudes: {bool type (AND, OR, NAND, NOR), conditions}
         var array_stack = [0];
         var n = 0;
@@ -96,10 +99,13 @@ var PolyString = {
             error = `Nonexistent set reference '${arg}'`;
         }
         if(type == "@") {
-            error = `Nonexistent group reference to '${arg}'`;
+            error = `Nonexistent group reference '${arg}'`;
         }
         if(type == "size") {
             error = `Expression too large`;
+        }
+        if(type == "backslash") {
+            error = `'\' at end of pattern`;
         }
         throw `SyntaxError: Invalid PolyString pattern ${pattern}: ${error}`;
         return error;
