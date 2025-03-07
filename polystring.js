@@ -1,8 +1,5 @@
 var PolyString = {
     "compile": function(exp) {
-        if(exp[exp.length - 2] + exp[exp.length - 1] == "\\\\") {
-            PolyString.error("backslash");
-        }
         var reqs = []; // format: characters: {allowed characters, bool}; boolean multitudes: {bool type (AND, OR, NAND, NOR), conditions}
         var array_stack = [0];
         var n = 0;
@@ -87,7 +84,7 @@ var PolyString = {
         }
         return reqs;
     },
-    "error": function(arg,pat){
+    "error": function(type,arg,pat){
         var error;
         if(type == "call") {
             error = `Nothing to call '${arg}' on`;
@@ -107,7 +104,7 @@ var PolyString = {
         if(type == "backslash") {
             error = `'\' at end of pattern`;
         }
-        throw `SyntaxError: Invalid PolyString pattern ${pattern}: ${error}`;
+        throw `SyntaxError: Invalid PolyString pattern ${pat}: ${error}`;
         return error;
     },
     "version":"1.1"
